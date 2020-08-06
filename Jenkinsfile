@@ -21,25 +21,25 @@ def build() {
     }
 }
 
-def putBinary() {
-    stage('Upload Binary') {
-        def fileName = ""
-        def fullPath = ""
-        Collection<org.jenkinsci.plugins.pipeline.maven.MavenArtifact> generatedArtifacts = currentBuild.rawBuild.getAction(org.jenkinsci.plugins.pipeline.maven.publishers.MavenReport.class).getGeneratedArtifacts();
-        for (org.jenkinsci.plugins.pipeline.maven.MavenArtifact generatedArtifact:generatedArtifacts) {
-            fileName = generatedArtifact.getFileName();
-            println(fileName)
-            println("--------")
-            break
-        }
+//def putBinary() {
+  //  stage('Upload Binary') {
+  //      def fileName = ""
+      //  def fullPath = ""
+      //  Collection<org.jenkinsci.plugins.pipeline.maven.MavenArtifact> generatedArtifacts = currentBuild.rawBuild.getAction(org.jenkinsci.plugins.pipeline.maven.publishers.MavenReport.class).getGeneratedArtifacts();
+       // for (org.jenkinsci.plugins.pipeline.maven.MavenArtifact generatedArtifact:generatedArtifacts) {
+        //    fileName = generatedArtifact.getFileName();
+          //  println(fileName)
+          //  println("--------")
+           /// break
+        //}
 
         // TODO: Fix region
-        fullPath = env.WORKSPACE + "/target/" + fileName
-        withAWS(credentials:'pipeline-credentials', region: env.AWS_REGION) {
-            s3Upload(bucket: env.ASSET_BUCKET, file: fullPath, path: fileName)
-        }
-    }
-}
+       // fullPath = env.WORKSPACE + "/target/" + fileName
+       //withAWS(credentials:'pipeline-credentials', region: env.AWS_REGION) {
+         //   s3Upload(bucket: env.ASSET_BUCKET, file: fullPath, path: fileName)
+       // }
+   // }
+//}
 
 def buildInfrastructure() {
     stage('Run Terraform') {
