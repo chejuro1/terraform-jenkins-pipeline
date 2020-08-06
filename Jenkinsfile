@@ -9,17 +9,17 @@ node {
     buildInfrastructure()
 }
 
-def checkout() {
-    stage('Clone') {
-        git branch: 'master', url: 'https://github.com/kevincloud/javaperks-customer-api.git'
-    }
-}
+//def checkout() {
+  //  stage('Clone') {
+       // git branch: 'master', url: 'https://github.com/kevincloud/javaperks-customer-api.git'
+   // }
+//}
 
-def build() {
-    stage('Build') {
-        mvn 'package'
-    }
-}
+//def build() {
+   // stage('Build') {
+    //    mvn 'package'
+    //}
+//}
 
 //def putBinary() {
   //  stage('Upload Binary') {
